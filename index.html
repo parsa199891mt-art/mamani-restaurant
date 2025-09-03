@@ -5,6 +5,8 @@
 <title>رستوران مامانی ازارا</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box;}
 body { font-family:'Vazirmatn', sans-serif; margin:0; background:#f0f0f5; color:#222; }
 header { background:#8b0000; color:#fff; padding:15px 30px; position:sticky; top:0; z-index:1000; }
 nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
@@ -16,9 +18,11 @@ nav a:hover { color:#ffcc00; }
 main { max-width:1200px; margin:30px auto; padding:0 15px; }
 .category-title { font-size:24px; margin:30px 0 15px; color:#8b0000; font-weight:700; border-bottom:2px solid #8b0000; display:inline-block; padding-bottom:5px; }
 .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; }
-.card { background:#fff; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.08); padding:20px; text-align:center; transition:0.3s; cursor:pointer; }
+.card { background:#fff; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.08); padding:20px; text-align:center; transition:0.3s; cursor:pointer; opacity:0; transform:translateY(20px); }
+.card.show { opacity:1; transform:translateY(0); transition:0.5s; }
 .card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
 .card h3 { margin:0; font-size:16px; font-weight:600; }
+
 button.load-more { margin:15px auto; display:block; padding:10px 20px; background:#8b0000; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:600; transition:0.3s; }
 button.load-more:hover { background:#ff4500; transform:scale(1.05); }
 
@@ -27,45 +31,46 @@ section#contact h2 { color:#8b0000; margin-bottom:10px; }
 footer { text-align:center; padding:20px; background:#111; color:#eee; margin-top:40px; border-top:3px solid #8b0000; }
 
 /* Login Modal */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-.modal-content { background:#fff; padding:30px; border-radius:12px; width:320px; text-align:center; position:relative; }
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; padding:10px; }
+.modal-content { background:#fff; padding:30px; border-radius:12px; width:100%; max-width:320px; text-align:center; position:relative; }
 .modal-content input { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:14px; }
 .modal-content button { width:100%; padding:12px; background:#8b0000; color:#fff; border:none; border-radius:8px; font-weight:600; font-size:16px; cursor:pointer; transition:0.3s; }
 .modal-content button:hover { background:#ff4500; transform:scale(1.05); }
 .close { position:absolute; top:10px; left:10px; font-size:28px; font-weight:bold; cursor:pointer; color:#8b0000; }
 
-@media(max-width:600px){ nav ul{flex-direction:column; gap:10px;} }
+@media(max-width:768px){ .grid { grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); } nav ul { flex-direction:column; gap:10px; } nav h1{ margin-bottom:10px; } }
+@media(max-width:480px){ .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 
 <header>
-  <nav>
-    <h1>رستوران مامانی ازارا</h1>
-    <ul>
-      <li><a href="#menu">منو</a></li>
-      <li><a href="#" onclick="openModal()">ورود</a></li>
-      <li><a href="#contact">تماس</a></li>
-    </ul>
-  </nav>
+<nav>
+<h1>رستوران مامانی ازارا</h1>
+<ul>
+<li><a href="#menu">منو</a></li>
+<li><a href="#" onclick="openModal()">ورود</a></li>
+<li><a href="#contact">تماس</a></li>
+</ul>
+</nav>
 </header>
 
 <main>
 <section id="menu">
-  <h2>منوی غذاها</h2>
+<h2>منوی غذاها</h2>
 
-  <div class="category-title">۵۰ غذای نونی</div>
-  <div class="grid" id="noniGrid"></div>
-  <button class="load-more" onclick="loadMore('noni')">ادامه</button>
+<div class="category-title">۵۰ غذای نونی</div>
+<div class="grid" id="noniGrid"></div>
+<button class="load-more" onclick="loadMore('noni')">ادامه</button>
 
-  <div class="category-title">۵۰ غذای برنجی</div>
-  <div class="grid" id="berenjGrid"></div>
-  <button class="load-more" onclick="loadMore('berenj')">ادامه</button>
+<div class="category-title">۵۰ غذای برنجی</div>
+<div class="grid" id="berenjGrid"></div>
+<button class="load-more" onclick="loadMore('berenj')">ادامه</button>
 </section>
 
 <section id="contact">
-  <h2>تماس با ما</h2>
-  <p>شماره تماس: 09116666173</p>
+<h2>تماس با ما</h2>
+<p>شماره تماس: 09116666173</p>
 </section>
 </main>
 
@@ -75,63 +80,42 @@ footer { text-align:center; padding:20px; background:#111; color:#eee; margin-to
 
 <!-- Login Modal -->
 <div class="modal" id="loginModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>ورود</h2>
-    <input type="text" placeholder="نام کاربری">
-    <input type="password" placeholder="رمز عبور">
-    <button onclick="login()">ورود</button>
-  </div>
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<h2>ورود</h2>
+<input type="text" placeholder="نام کاربری">
+<input type="password" placeholder="رمز عبور">
+<button onclick="login()">ورود</button>
+</div>
 </div>
 
 <script>
-// داده های غذاها
-const noniFoods = [
-"کوفته تبریزی","کوفته ریزه","کشک بادمجان","میرزا قاسمی","کوکو سبزی",
-"کوکو سیب‌زمینی","شامی کباب","کتلت گوشت","اشکنه تخم‌مرغ","عدسی",
-"کوفته نخودچی","کوفته قلقلی","دلمه برگ مو","دلمه کلم","دلمه فلفل دلمه‌ای",
-"دلمه بادمجان","دلمه گوجه فرنگی","حلیم بادمجان","بورانی بادمجان","بورانی اسفناج",
-"بورانی کدو","کوکو بادمجان","کوکو لوبیا سبز","کوکو مرغ","کوکو ماهی",
-"شامی پوک","شامی شیرازی","کتلت مرغ","کتلت سیب‌زمینی","اشکنه سیب‌زمینی",
-"لوبیا پلو نونی","لوبیا چیتی خوراکی","خوراک لوبیا سبز","خوراک لوبیا چشم‌بلبلی","خوراک لوبیا سفید",
-"خوراک لوبیا قرمز","خوراک عدس با سبزیجات","خوراک جگر","خوراک قلوه","خوراک دل و قلوه",
-"خوراک زبان","جغوربغور","سوسیس بندری","خوراک مرغ و قارچ","خوراک بامیه",
-"خوراک هویج","خوراک کدو سبز","خوراک کرفس","خوراک سیب‌زمینی و تخم‌مرغ"
-];
+// داده‌های غذاها
+const noniFoods = [...Array(50)].map((_,i)=>`غذای نونی ${i+1}`);
+const berenjFoods = [...Array(50)].map((_,i)=>`غذای برنجی ${i+1}`);
 
-const berenjFoods = [
-"چلو کباب کوبیده","چلو جوجه کباب","چلو کباب سلطانی","چلو کباب برگ","چلو کباب بختیاری",
-"چلو کباب ترش","چلو خورشت قورمه سبزی","چلو خورشت قیمه","چلو خورشت فسنجان","چلو خورشت کرفس",
-"چلو خورشت بامیه","چلو خورشت آلو اسفناج","چلو خورشت خلال کرمانشاهی","چلو خورشت مسما بادمجان","چلو خورشت سیب‌زمینی و مرغ",
-"چلو خورشت ماست اصفهانی","زرشک‌پلو با مرغ","زرشک‌پلو با ماهیچه","شیرین‌پلو","هویج‌پلو",
-"خلال‌پلو","عدس‌پلو","لوبیا‌پلو","کلم‌پلو شیرازی","کلم‌پلو کرمانی",
-"سبزی‌پلو با ماهی","سبزی‌پلو با مرغ","سبزی‌پلو با کوفته","باقالی‌پلو با گوشت","باقالی‌پلو با مرغ",
-"باقالی‌پلو با ماهی","رشته‌پلو","ماش‌پلو","دمی‌ماش","دمی‌گوجه فرنگی",
-"دمی‌لوبیا سبز","دمی‌کدو","دمی‌پیاز","دمی‌عدس","استانبولی‌پلو",
-"ته‌چین مرغ","ته‌چین گوشت","ته‌چین بادمجان","ته‌چین اسفناج","ته‌چین ماهی",
-"پلو یونانی ایرانی‌شده","سبزی‌پلو با تخم‌مرغ","پلو زعفرانی ساده","پلو سفید ایرانی","پلو قالبی با خلال و مغزها"
-];
+let noniIndex = 0, berenjIndex = 0, perLoad = 10;
 
-let noniIndex = 0;
-let berenjIndex = 0;
-const perLoad = 10;
+function createCard(name){
+  const card = document.createElement('div'); card.className='card';
+  const h3 = document.createElement('h3'); h3.textContent=name;
+  card.appendChild(h3);
+  return card;
+}
 
 function loadMore(category){
   let grid, foods, index;
-  if(category==='noni'){
-    grid = document.getElementById('noniGrid'); foods = noniFoods; index = noniIndex;
-  } else {
-    grid = document.getElementById('berenjGrid'); foods = berenjFoods; index = berenjIndex;
+  if(category==='noni'){ grid=document.getElementById('noniGrid'); foods=noniFoods; index=noniIndex; }
+  else { grid=document.getElementById('berenjGrid'); foods=berenjFoods; index=berenjIndex; }
+
+  for(let i=index;i<index+perLoad && i<foods.length;i++){
+    const card=createCard(foods[i]);
+    grid.appendChild(card);
+    setTimeout(()=>{ card.classList.add('show'); }, 50*i);
   }
 
-  for(let i=index; i<index+perLoad && i<foods.length; i++){
-    const card = document.createElement('div'); card.className='card';
-    const h3 = document.createElement('h3'); h3.textContent = foods[i];
-    card.appendChild(h3); grid.appendChild(card);
-  }
-
-  if(category==='noni'){ noniIndex += perLoad; if(noniIndex>=foods.length) document.querySelector('#noniGrid + .load-more').style.display='none'; }
-  else{ berenjIndex += perLoad; if(berenjIndex>=foods.length) document.querySelector('#berenjGrid + .load-more').style.display='none'; }
+  if(category==='noni'){ noniIndex+=perLoad; if(noniIndex>=foods.length) document.querySelector('#noniGrid + .load-more').style.display='none'; }
+  else { berenjIndex+=perLoad; if(berenjIndex>=foods.length) document.querySelector('#berenjGrid + .load-more').style.display='none'; }
 }
 
 // بارگذاری اولیه
@@ -141,9 +125,9 @@ loadMore('noni'); loadMore('berenj');
 function openModal(){ document.getElementById('loginModal').style.display='flex'; }
 function closeModal(){ document.getElementById('loginModal').style.display='none'; }
 function login(){
-  let user = document.querySelector('#loginModal input[type="text"]').value;
-  let pass = document.querySelector('#loginModal input[type="password"]').value;
-  if(user && pass){ alert('ورود موفق: ' + user); closeModal(); }
+  let user=document.querySelector('#loginModal input[type="text"]').value;
+  let pass=document.querySelector('#loginModal input[type="password"]').value;
+  if(user && pass){ alert('ورود موفق: '+user); closeModal(); }
   else { alert('لطفاً نام کاربری و رمز عبور را وارد کنید!'); }
 }
 window.onclick = function(event){ if(event.target==document.getElementById('loginModal')) closeModal(); }
