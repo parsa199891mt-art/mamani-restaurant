@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>رستوران مامانی ازارا — منو</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Vazirmatn',Tahoma,Arial,sans-serif;margin:0;background:#fafafa;color:#111}
+    header{background:linear-gradient(90deg,#b22222,#8b0000);color:#fff;text-align:center;padding:20px 10px}
+    header h1{margin:0;font-size:32px}
+    header .contact{margin-top:6px;font-size:16px}
+    main{max-width:1100px;margin:24px auto;padding:0 16px}
+    .lists{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    section{background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06);padding:16px}
+    h2{margin:0 0 12px;font-size:20px;color:#b22222}
+    ol{margin:0;padding-inline-start:22px}
+    li{margin:6px 0;font-size:15px}
+    footer{text-align:center;padding:20px;background:#111;color:#eee;margin-top:30px}
+    @media(max-width:800px){.lists{grid-template-columns:1fr}}
+
+    /* Login modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:100}
+    .modal.show{display:flex}
+    .modal .box{background:#fff;padding:20px;border-radius:10px;max-width:360px;width:90%;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+    .modal h3{margin-top:0;color:#b22222}
+    .modal input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+    .modal button{width:100%;padding:10px;margin-top:10px;border:none;border-radius:8px;background:#b22222;color:#fff;font-weight:600;cursor:pointer}
+    .login-btn{position:absolute;top:16px;left:16px;background:#fff;color:#b22222;padding:6px 12px;border-radius:8px;cursor:pointer;border:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <header>
+    <button class="login-btn" onclick="openLogin()">ورود</button>
+    <h1>رستوران مامانی ازارا</h1>
+    <div class="contact">تماس با ما: 09116666173</div>
+  </header>
+
+  <main>
+    <div class="lists">
+      <section aria-labelledby="noni">
+        <h2 id="noni">۵۰ غذای نونی</h2>
+        <ol>
+          <li>کوفته تبریزی</li>
+          <li>کوفته ریزه</li>
+          <li>کوفته نخودچی</li>
+          <li>کوفته سبزی شیرازی</li>
+          <li>کوفته قلقلی</li>
+          <li>دلمه برگ مو</li>
+          <li>دلمه کلم</li>
+          <li>دلمه فلفل دلمه‌ای</li>
+          <li>دلمه بادمجان</li>
+          <li>دلمه گوجه فرنگی</li>
+          <li>حلیم بادمجان</li>
+          <li>کشک بادمجان</li>
+          <li>میرزا قاسمی</li>
+          <li>بورانی بادمجان</li>
+          <li>بورانی اسفناج</li>
+          <li>بورانی کدو</li>
+          <li>کوکو سبزی</li>
+          <li>کوکو سیب‌زمینی</li>
+          <li>کوکو بادمجان</li>
+          <li>کوکو لوبیا سبز</li>
+          <li>کوکو مرغ</li>
+          <li>کوکو ماهی</li>
+          <li>شامی کباب (شامی لپه)</li>
+          <li>شامی پوک</li>
+          <li>شامی شیرازی</li>
+          <li>کتلت گوشت</li>
+          <li>کتلت مرغ</li>
+          <li>کتلت سیب‌زمینی</li>
+          <li>اشکنه تخم‌مرغ</li>
+          <li>اشکنه سیب‌زمینی</li>
+          <li>عدسی</li>
+          <li>لوبیا پلو نونی (لوبیا با نان)</li>
+          <li>لوبیا چیتی خوراکی</li>
+          <li>خوراک لوبیا سبز</li>
+          <li>خوراک لوبیا چشم‌بلبلی</li>
+          <li>خوراک لوبیا سفید</li>
+          <li>خوراک لوبیا قرمز</li>
+          <li>خوراک عدس با سبزیجات</li>
+          <li>خوراک جگر</li>
+          <li>خوراک قلوه</li>
+          <li>خوراک دل و قلوه</li>
+          <li>خوراک زبان</li>
+          <li>جغوربغور</li>
+          <li>سوسیس بندری</li>
+          <li>خوراک مرغ و قارچ</li>
+          <li>خوراک بامیه</li>
+          <li>خوراک هویج</li>
+          <li>خوراک کدو سبز</li>
+          <li>خوراک کرفس</li>
+          <li>خوراک سیب‌زمینی و تخم‌مرغ</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="bere">
+        <h2 id="bere">۵۰ غذای برنجی</h2>
+        <ol>
+          <li>چلو کباب کوبیده</li>
+          <li>چلو جوجه کباب</li>
+          <li>چلو کباب سلطانی</li>
+          <li>چلو کباب برگ</li>
+          <li>چلو کباب بختیاری</li>
+          <li>چلو کباب ترش</li>
+          <li>چلو خورشت قورمه سبزی</li>
+          <li>چلو خورشت قیمه</li>
+          <li>چلو خورشت فسنجان</li>
+          <li>چلو خورشت کرفس</li>
+          <li>چلو خورشت بامیه</li>
+          <li>چلو خورشت آلو اسفناج</li>
+          <li>چلو خورشت خلال کرمانشاهی</li>
+          <li>چلو خورشت مسما بادمجان</li>
+          <li>چلو خورشت سیب‌زمینی و مرغ</li>
+          <li>چلو خورشت ماست اصفهانی</li>
+          <li>زرشک‌پلو با مرغ</li>
+          <li>زرشک‌پلو با ماهیچه</li>
+          <li>شیرین‌پلو</li>
+          <li>هویج‌پلو</li>
+          <li>خلال‌پلو</li>
+          <li>عدس‌پلو</li>
+          <li>لوبیا‌پلو</li>
+          <li>کلم‌پلو شیرازی</li>
+          <li>کلم‌پلو کرمانی</li>
+          <li>سبزی‌پلو با ماهی</li>
+          <li>سبزی‌پلو با مرغ</li>
+          <li>سبزی‌پلو با کوفته</li>
+          <li>باقالی‌پلو با گوشت</li>
+          <li>باقالی‌پلو با مرغ</li>
+          <li>باقالی‌پلو با ماهی</li>
+          <li>رشته‌پلو</li>
+          <li>ماش‌پلو</li>
+          <li>دمی‌ماش</li>
+          <li>دمی‌گوجه فرنگی</li>
+          <li>دمی‌لوبیا سبز</li>
+          <li>دمی‌کدو</li>
+          <li>دمی‌پیاز</li>
+          <li>دمی‌عدس</li>
+          <li>استانبولی‌پلو</li>
+          <li>ته‌چین مرغ</li>
+          <li>ته‌چین گوشت</li>
+          <li>ته‌چین بادمجان</li>
+          <li>ته‌چین اسفناج</li>
+          <li>ته‌چین ماهی</li>
+          <li>پلو یونانی ایرانی‌شده</li>
+          <li>سبزی‌پلو با تخم‌مرغ</li>
+          <li>پلو زعفرانی ساده</li>
+          <li>پلو سفید ایرانی (چلو ساده با کره)</li>
+          <li>پلو قالبی با خلال و مغزها</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div>© 2025 رستوران مامانی ازارا</div>
+  </footer>
+
+  <div class="modal" id="loginModal">
+    <div class="box">
+      <h3>ورود</h3>
+      <input type="text" placeholder="نام کاربری" id="username">
+      <input type="password" placeholder="رمز عبور" id="password">
+      <button onclick="closeLogin()">ورود</button>
+    </div>
+  </div>
+
+  <script>
+    const modal=document.getElementById('loginModal');
+    function openLogin(){modal.classList.add('show');}
+    function closeLogin(){modal.classList.remove('show');}
+  </script>
+</body>
+</html>
